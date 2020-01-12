@@ -16,6 +16,7 @@ class App extends Component{
     this.state = {
       selectedProject: 0,
       projects: projects,
+      playing: false,
       modalOpen: false,
       modalContent: null
     }
@@ -65,6 +66,22 @@ class App extends Component{
       selectedProject: lastProject
     })
 
+  }
+  playSlideshow = () => {
+    this.setState({
+      playing: true
+    })
+    console.log('playing slideshow');
+    this.interval = setInterval(()=>{
+      this.nextProject();
+    },5000)
+  }
+  stopSlideshow = () => {
+    this.setState({
+      playing:false
+    })
+    console.log('stopping slideshow');
+    clearInterval(this.interval)
   }
   swipe = () => {
     console.log('swiping!');
@@ -168,6 +185,22 @@ class App extends Component{
         </header>
         <div className="main-container">
           <nav className="project-nav">
+            {
+              this.state.playing ? 
+              <Button
+                onClick={this.stopSlideshow} 
+                size='small' 
+                style={{float:'left', margin:'1vw',textAlign:'center',color:'red'}}>
+                  <Icon name='stop'style={{margin:'0'}}></Icon>
+              </Button>
+              :
+              <Button
+                onClick={this.playSlideshow} 
+                size='small' 
+                style={{float:'left', margin:'1vw',textAlign:'center',color:'green'}}>
+                  <Icon name='play' style={{margin:'0'}}></Icon>
+              </Button>
+            }
             {projectDots}
           </nav>
           <main>

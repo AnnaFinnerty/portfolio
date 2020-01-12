@@ -16,7 +16,7 @@ const projects = [
         logoColor: 'black',
         titleColor: 'white',
         arrowColor: 'dimgray',
-        dotColor: 'white',
+        dotColor: 'dimgray',
         bannerColor: 'black',
         buttonColor: 'black',
         collaborators: []
@@ -38,7 +38,7 @@ const projects = [
         arrowColor: 'orange',
         dotColor: 'orange',
         bannerColor: 'black',
-        buttonColor: 'orange',
+        buttonColor: 'darkorange',
         collaborators: [{
             name: 'Walter Sylvester',
             url: 'https://github.com/walter74ucla'
@@ -121,10 +121,10 @@ const projects = [
         start: true,
         logoColor: 'magenta',
         titleColor: 'greenyellow',
-        arrowColor: 'greenyellow',
+        arrowColor: 'magenta',
         dotColor: 'greenyellow',
         bannerColor: 'black',
-        buttonColor: 'black',
+        buttonColor: 'magenta',
         collaborators: [{
             name: 'Michael Finnerty',
             url: 'https://github.com/MichaelJamesFinnerty'

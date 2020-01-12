@@ -72,6 +72,12 @@ footer{
   border-radius: 2%;
 }
 
+.load-bar{
+  width: 20vw;
+  height: 7vh;
+  background: blue;
+}
+
 @media only screen and (max-width: 605px) {
   .logo{
     font-size: 5vh;
