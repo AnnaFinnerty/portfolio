@@ -115,7 +115,7 @@ const projects = [
         url: 'https://annafinnerty.github.io/named_colorwheel/',
         githubUrl: 'https://github.com/AnnaFinnerty/named_colorwheel',
         src: ['./img/ColorWheel1.png'],
-        description: 'React game with AI opponent',
+        description: 'Color picker for HTML named colors',
         caseStudy: [],
         live: true,
         start: true,

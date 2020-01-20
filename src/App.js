@@ -18,7 +18,8 @@ class App extends Component{
       projects: projects,
       playing: false,
       modalOpen: false,
-      modalContent: null
+      modalContent: null,
+      fullscreen: false
     }
     this.icons = {
       Python: 'python',
@@ -85,6 +86,35 @@ class App extends Component{
   }
   swipe = () => {
     console.log('swiping!');
+  }
+  openFull = () => {
+    const elem = document.documentElement;
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) { /* Firefox */
+      elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE */
+      elem.msRequestFullscreen();
+    }
+    this.setState({
+      fullscreen: true
+    })
+  }
+  closeFull = () => {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) { /* Firefox */
+      document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) { /* IE */
+      document.msExitFullscreen();
+    }
+    this.setState({
+      fullscreen: false
+    })
   }
   openModal = (type) =>{
     this.setState({
@@ -157,11 +187,11 @@ class App extends Component{
       <div className="image-display" style={backgroundImage}>
         <header>
           <Grid style={{width:'100%'}} columns={4}>
-            <Grid.Column width={11}>
+            <Grid.Column width={10}>
               <Grid.Row><span className="logo" style={{color:project.logoColor}}>Anna Finnerty</span></Grid.Row>
               <Grid.Row><span className="title" style={{color:project.titleColor}} >Web Developer/Software Engineer</span></Grid.Row>
             </Grid.Column>
-            <Grid.Column width={5}>
+            <Grid.Column width={6}>
               <Grid.Row style={{marginTop:'1vh',textAlign:'center'}}>
                 <a href='https://www.github.com/AnnaFinnerty' target='_black'>
                   <Icon style={{color:project.titleColor}} size='huge' name='github square' alt='github'></Icon>
@@ -178,6 +208,28 @@ class App extends Component{
                   <Button style={{color:project.buttonColor}} onClick={()=>this.openModal('stack')}>stack</Button>
                   <Button style={{color:project.buttonColor}} onClick={()=>this.openModal('about')}>about</Button>
                   <Button style={{color:project.buttonColor}} onClick={()=>this.openModal('contact')}>contact</Button>
+                  {
+                    this.state.playing ? 
+                    <Button
+                      onClick={this.stopSlideshow} 
+                      size='small' 
+                      style={{color:'red'}}>
+                        <Icon name='stop'style={{margin:'0'}}></Icon>
+                    </Button>
+                    :
+                    <Button
+                      onClick={this.playSlideshow} 
+                      size='small' 
+                      style={{color:'green'}}>
+                        <Icon name='play' style={{margin:'0'}}></Icon>
+                    </Button>
+                  }
+                  {
+                      !this.state.fullscreen ?
+                      <Button onClick={this.openFull} ><Icon name="window maximize outline"></Icon></Button>
+                      :
+                      <Button onClick={this.closeFull} style={{padding:"2%"}}><Icon name="window restore outline"></Icon></Button>
+                  }
                 </nav>
               </Grid.Row>
             </Grid.Column>
@@ -185,22 +237,7 @@ class App extends Component{
         </header>
         <div className="main-container">
           <nav className="project-nav">
-            {
-              this.state.playing ? 
-              <Button
-                onClick={this.stopSlideshow} 
-                size='small' 
-                style={{float:'left', margin:'1vw',textAlign:'center',color:'red'}}>
-                  <Icon name='stop'style={{margin:'0'}}></Icon>
-              </Button>
-              :
-              <Button
-                onClick={this.playSlideshow} 
-                size='small' 
-                style={{float:'left', margin:'1vw',textAlign:'center',color:'green'}}>
-                  <Icon name='play' style={{margin:'0'}}></Icon>
-              </Button>
-            }
+            
             {projectDots}
           </nav>
           <main>
