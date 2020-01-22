@@ -19,6 +19,8 @@ const projects = [
         dotColor: 'dimgray',
         bannerColor: 'black',
         buttonColor: 'black',
+        borderColor: 'black',
+        font: 'Arial Black',
         collaborators: []
     },
     {
@@ -39,6 +41,8 @@ const projects = [
         dotColor: 'orange',
         bannerColor: 'black',
         buttonColor: 'darkorange',
+        borderColor: 'orange',
+        font: 'Arial',
         collaborators: [{
             name: 'Walter Sylvester',
             url: 'https://github.com/walter74ucla'
@@ -62,6 +66,8 @@ const projects = [
         dotColor: 'navy',
         bannerColor: 'black',
         buttonColor: 'navy',
+        borderColor: 'dodgerblue',
+        font: 'Times New Roman',
         collaborators: [{
             name: 'Tyler Walker',
             url: 'https://github.com/tbone9'
@@ -85,6 +91,8 @@ const projects = [
         dotColor: 'dodgerblue',
         bannerColor: 'black',
         buttonColor: 'dodgerblue',
+        borderColor: 'coral',
+        font: 'Impact',
         collaborators: []
     },
     {
@@ -105,6 +113,8 @@ const projects = [
         dotColor: 'black',
         bannerColor: 'black',
         buttonColor: 'black',
+        borderColor: 'black',
+        font: 'Helvetica',
         collaborators: []
     },
     {
@@ -125,6 +135,8 @@ const projects = [
         dotColor: 'greenyellow',
         bannerColor: 'black',
         buttonColor: 'magenta',
+        borderColor: 'magenta',
+        font: 'Lucida Grande',
         collaborators: [{
             name: 'Michael Finnerty',
             url: 'https://github.com/MichaelJamesFinnerty'
@@ -148,6 +160,8 @@ const projects = [
         dotColor: 'white',
         bannerColor: 'black',
         buttonColor: 'black',
+        borderColor: 'black',
+        font: 'Times New Roman',
         collaborators: []
     },
     {
@@ -168,6 +182,8 @@ const projects = [
         dotColor: 'white',
         bannerColor: 'black',
         buttonColor: 'black',
+        borderColor: 'black',
+        font: 'Courier',
         collaborators: []
     }
 ]

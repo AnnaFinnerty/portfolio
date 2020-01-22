@@ -188,7 +188,7 @@ class App extends Component{
         <header>
           <Grid style={{width:'100%'}} columns={4}>
             <Grid.Column width={10}>
-              <Grid.Row><span className="logo" style={{color:project.logoColor}}>Anna Finnerty</span></Grid.Row>
+              <Grid.Row><span className="logo" style={{color:project.logoColor, fontFamily:"'"+project.font+"'"}}>Annie Finnerty</span></Grid.Row>
               <Grid.Row><span className="title" style={{color:project.titleColor}} >Web Developer/Software Engineer</span></Grid.Row>
             </Grid.Column>
             <Grid.Column width={6}>
@@ -241,7 +241,7 @@ class App extends Component{
             {projectDots}
           </nav>
           <main>
-              <Grid className='project' columns={3} style={{margin:'0 auto',height:'auto',maxHeight:'60vh', borderColor:project.arrowColor}}>
+              <Grid className='project' columns={3} style={{margin:'0 auto',height:'auto',maxHeight:'60vh', borderColor:project.borderColor}}>
                 <Grid.Column width={2}>
                     <button className='arrow-button' 
                           onClick={this.lastProject}
@@ -255,7 +255,7 @@ class App extends Component{
                   </button>
                 </Grid.Column>
                 <Grid.Column width={12}>
-              <Header><h1>{project.name}</h1></Header>
+              <Header><h1 style={{fontFamily:"'"+project.font+"'"}}>{project.name}</h1></Header>
               <h3>stack</h3>
               {stack}
               <h3>description</h3>

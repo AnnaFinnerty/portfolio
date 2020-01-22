@@ -30,6 +30,12 @@ footer{
   color: white;
 }
 
+h1{
+  font-size: 200%;
+  border-bottom: .5px solid dimgray;
+  text-align: center;
+}
+
 .logo{
   font-size: 8vh;
   line-height: 10vh;
