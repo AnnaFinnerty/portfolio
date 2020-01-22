@@ -241,7 +241,7 @@ class App extends Component{
             {projectDots}
           </nav>
           <main>
-              <Grid className='project' columns={3} style={{margin:'0 auto',height:'auto',maxHeight:'60vh'}}>
+              <Grid className='project' columns={3} style={{margin:'0 auto',height:'auto',maxHeight:'60vh', borderColor:project.arrowColor}}>
                 <Grid.Column width={2}>
                     <button className='arrow-button' 
                           onClick={this.lastProject}
