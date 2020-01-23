@@ -15,8 +15,10 @@ class App extends Component{
     super();
     this.state = {
       selectedProject: 0,
+      projectFull: false,
       projects: projects,
       playing: false,
+      resume: false,
       modalOpen: false,
       modalContent: null,
       fullscreen: false
@@ -58,21 +60,26 @@ class App extends Component{
   nextProject = () => {
     const nextProject = this.state.selectedProject >= this.state.projects.length - 1 ? 0 : this.state.selectedProject + 1;
     this.setState({
-      selectedProject: nextProject
+      selectedProject: nextProject,
+      projectFull: false
     })
   }
   lastProject = () => {
     const lastProject = this.state.selectedProject === 0 ? this.state.projects.length - 1 : this.state.selectedProject - 1;
     this.setState({
-      selectedProject: lastProject
+      selectedProject: lastProject,
+      projectFull: false
     })
-
   }
   playSlideshow = () => {
     this.setState({
-      playing: true
+      playing: true,
+      projectFull: false
     })
     console.log('playing slideshow');
+    this.start();
+  }
+  start = () => {
     this.interval = setInterval(()=>{
       this.nextProject();
     },5000)
@@ -86,6 +93,30 @@ class App extends Component{
   }
   swipe = () => {
     console.log('swiping!');
+  }
+  openProject = () => {
+    console.log('opening project');
+    if(this.state.playing){
+      console.log('stopping slideshow');
+      clearInterval(this.interval)
+    }
+    const resume = this.state.playing ? true : false
+    this.setState({
+      playing: false,
+      projectFull: true,
+      resume: resume,
+    })
+  }
+  closeProject = () => {
+    if(this.state.resume){
+      console.log('starting slideshow');
+      this.start();
+    }
+    this.setState({
+      playing: true,
+      projectFull: false,
+      resume: false
+    })
   }
   openFull = () => {
     const elem = document.documentElement;
@@ -160,12 +191,12 @@ class App extends Component{
     const stack = project.stack.map((item,i) =>{
       const icon = this.icons[item] ? this.icons[item] : 'circle'
       return(
-        <React.Fragment key={'stack_'+i}>
+        <div className="flex-item stack-item" key={'stack_'+i}>
           <Icon  
                 name={icon}>
           </Icon>
           {item}
-        </React.Fragment>
+        </div>
       )
     })
     const collaborators = project.collaborators.map((item,i) =>{
@@ -241,9 +272,9 @@ class App extends Component{
             {projectDots}
           </nav>
           <main>
-              <Grid className='project' columns={3} style={{margin:'0 auto',height:'auto',maxHeight:'60vh', borderColor:project.borderColor}}>
+              <Grid className={this.state.projectFull ? 'project project-full' : 'project project-small'} columns={3} style={{margin:'0 auto', borderColor:project.borderColor}}>
                 <Grid.Column width={2}>
-                    <button className='arrow-button' 
+                    <button className={this.state.projectFull ? 'arrow-button arrow-button-full' : 'arrow-button arrow-button-small'} 
                           onClick={this.lastProject}
                           style={{backgroundColor:'rgba(0,0,0,.1)',color:project.arrowColor,margin:'0 auto',padding:'0'}}
                           >
@@ -256,18 +287,19 @@ class App extends Component{
                 </Grid.Column>
                 <Grid.Column width={12}>
               <Header><h1 style={{fontFamily:"'"+project.font+"'"}}>{project.name}</h1></Header>
-              <h3>stack</h3>
-              {stack}
-              <h3>description</h3>
-              <p>{project.description}</p>
-              {
-                !project.collaborators.length ? '' :
-                <React.Fragment>
-                  <h3>collaborators</h3>
-                  {collaborators}
-                </React.Fragment>
-              }
+              <p className="description">{project.description}</p>
+              <div className="flex-container" style={{minHeight:"8vh"}}>
+                {stack}
+              </div>
               <div style={{textAlign:'center', marginTop:'3vh'}}>
+              {
+                this.state.projectFull ?
+                <Button onClick={this.closeProject}>
+                  <Icon name="up arrow"></Icon>
+                </Button>
+                :
+                <Button onClick={this.openProject}>learn more</Button>
+              }
               {
                 !project.githubUrl ? '':
                 <a href={project.url} target='_blank' rel="noopener noreferrer">
@@ -281,9 +313,34 @@ class App extends Component{
                 </a>
               }
               </div>
+              <div className="project-scrollable">
+              {
+                !this.state.projectFull || !project.collaborators.length ? '' :
+                <React.Fragment>
+                  <h3>collaborators</h3>
+                  {collaborators}
+                </React.Fragment>
+              }
+              {
+                !this.state.projectFull ? '' :
+                <React.Fragment>
+                  <h3>case study</h3>
+                 
+                  {
+                    project.caseStudy.map((para,i) => {
+                      return(
+                        <p key={'para_'+i}>
+                          {para}
+                        </p>
+                      )
+                    })
+                  }
+                </React.Fragment> 
+              }
+              </div>
               </Grid.Column>
               <Grid.Column width={2} >
-                <button className='arrow-button' 
+                <button className={this.state.projectFull ? 'arrow-button arrow-button-full' : 'arrow-button arrow-button-small'} 
                         onClick={this.nextProject}
                         style={{backgroundColor:'rgba(0,0,0,.1)',color:project.arrowColor,margin:'0',padding:'0'}}
                       >
