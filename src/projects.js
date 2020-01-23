@@ -11,7 +11,8 @@ const projects = [
         caseStudy: [
             'A fun weekend project to get back into pure js.',
             'I used the prototype pattern to sync up user input with a bunch of fun hairstyles. Inputs are dynamically displayed based on the current hairstyle.',
-            'Illustrations were created in Inkscape, but are display as PNGs -- not SVG, an upgrade I plan to make in the future',
+            'Illustrations were created in Inkscape, but are displayed as PNGs -- not SVG, an upgrade I plan to make in the future',
+            '  '
         ],
         live: true,
         start: true,
@@ -39,8 +40,8 @@ const projects = [
         caseStudy: [
             'Habit is a full CRUD app that allows users to create and track the development of personal habits.',
             'My partner and I started by building out the backend in Express and Mongoose, creating multiple related models to track users created behaviors, as well as instances of those behaviors',
-            'Since privacy was important to us, users could could whether they wanted to be visible to other users, or keep themselves private',
-            'I also created a completely seperate administrator route, allowing access to full admin functions'
+            'Since privacy was important to us, users could could whether they wanted to be visible to other users.',
+            '  '
         ],
         live: true,
         start: false,
@@ -69,7 +70,8 @@ const projects = [
         caseStudy: [
             'Still breaking allows users to keep track of ongoing news stories before they fall through the cracks,',
             'Using NewsAPI, my partner and I allows registered users to search and save for stories, create topics to group stories, and saved their most search topics',
-            "Optimized for mobile usage, Still Breaking has a clean, modern interface with multiple modals"
+            "Optimized for mobile usage, Still Breaking has a clean, modern interface with multiple modals.",
+            '  '
         ],
         live: true,
         start: false,
@@ -98,11 +100,12 @@ const projects = [
         caseStudy: [
             'One of my first projects in React.js, but still one of my favorites',
             "This turn-based game-takeover game simple enough when played against another player, but I struggled for months to make an AI that was suitably easy for 'easy' mode. It simply wanted to win!",
-            "Amazingly enough, most of it's behavior is random -- with a little distance calculation of the closest route to your citadel!"
+            "Amazingly enough, most of it's behavior is random -- with a little distance calculation of the closest route to your citadel!",
+            '  '
         ],
         live: true,
         start: true,
-        logoColor: 'lightskyblue',
+        logoColor: 'dodgerblue',
         titleColor: 'coral',
         arrowColor: 'coral',
         dotColor: 'dodgerblue',
@@ -148,7 +151,8 @@ const projects = [
             "I wanted to explore using HTML5 canvas to create a useful tool, and had just learned about CSS named colors, and thought it would be fun to have an interactive tool to explore them.",
             "The default value shows the colors sorted, and then drawn in a circle, arranged by rgb values. Click the slider on the side to see other sorts.",
             "Click to see differently complementary pairings -- all done with some simple trigonometry.",
-            "A lot of math, but a project I'm still proud of completing."
+            "A lot of math, but a project I'm still proud of completing.",
+            '  '
         ],
         live: true,
         start: true,
@@ -222,7 +226,8 @@ const projects = [
             "This was my capstone project for General Assembly, and it's very much still a work in progress",
             "It allows users to collectively load Youtube videos on an external site and collectively vote on whether or not they like the song -- perfect for parties",
             "Creators can start playlists, invite users to join, and keep records of playlists -- while the users ids are temporary, and expire unless they sign up",
-            "I'm still working out live upvoting and downvoting, but it's been a great challenge!"
+            "I'm still working out live upvoting and downvoting, but it's been a great challenge!",
+            '  '
         ],
         live: true,
         start: false,

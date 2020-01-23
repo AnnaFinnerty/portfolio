@@ -15,6 +15,8 @@ class App extends Component{
     super();
     this.state = {
       selectedProject: 0,
+      timeLimit: 3000,
+      time: 3000,
       projectFull: false,
       projects: projects,
       playing: false,
@@ -81,8 +83,16 @@ class App extends Component{
   }
   start = () => {
     this.interval = setInterval(()=>{
-      this.nextProject();
-    },5000)
+      if(this.state.time === 0){
+
+        this.nextProject();
+      }
+      const time = this.state.time <= 0 ? this.state.timeLimit : this.state.time - 1;
+      this.setState({
+        time: time
+      })
+      
+    },10)
   }
   stopSlideshow = () => {
     this.setState({
@@ -108,14 +118,18 @@ class App extends Component{
     })
   }
   closeProject = () => {
+    let nextProject = this.state.selectedProject;
     if(this.state.resume){
       console.log('starting slideshow');
+      nextProject = this.state.selectedProject >= this.state.projects.length - 1 ? 0 : this.state.selectedProject + 1;
       this.start();
     }
     this.setState({
-      playing: true,
+      time: this.state.timeLimit,
+      playing: this.state.resume ? true : false,
       projectFull: false,
-      resume: false
+      resume: false,
+      selectedProject: nextProject
     })
   }
   openFull = () => {
@@ -213,12 +227,14 @@ class App extends Component{
         </React.Fragment>
       )
     })
+    //remeber to change this into a new thing
+    const progress = this.state.time/this.state.timeLimit * 100;
     return (
       <Swipeable onSwiped={(eventData) => this.swipe} >
       <div className="image-display" style={backgroundImage}>
         <header>
           <Grid style={{width:'100%'}} columns={4}>
-            <Grid.Column width={10}>
+            <Grid.Column width={10} style={{paddingLeft:'8vw'}}>
               <Grid.Row><span className="logo" style={{color:project.logoColor, fontFamily:"'"+project.font+"'"}}>Annie Finnerty</span></Grid.Row>
               <Grid.Row><span className="title" style={{color:project.titleColor}} >Web Developer/Software Engineer</span></Grid.Row>
             </Grid.Column>
@@ -249,17 +265,16 @@ class App extends Component{
                     </Button>
                     :
                     <Button
-                      onClick={this.playSlideshow} 
-                      size='small' 
+                      onClick={this.playSlideshow}  
                       style={{color:'green'}}>
                         <Icon name='play' style={{margin:'0'}}></Icon>
                     </Button>
                   }
                   {
                       !this.state.fullscreen ?
-                      <Button onClick={this.openFull} ><Icon name="window maximize outline"></Icon></Button>
+                      <Button onClick={this.openFull} ><Icon style={{margin:'0'}} name="window maximize outline"></Icon></Button>
                       :
-                      <Button onClick={this.closeFull} style={{padding:"2%"}}><Icon name="window restore outline"></Icon></Button>
+                      <Button onClick={this.closeFull} style={{padding:"2%"}}><Icon style={{margin:'0'}} name="window restore outline"></Icon></Button>
                   }
                 </nav>
               </Grid.Row>
@@ -273,7 +288,20 @@ class App extends Component{
           </nav>
           <main>
               <Grid className={this.state.projectFull ? 'project project-full' : 'project project-small'} columns={3} style={{margin:'0 auto', borderColor:project.borderColor}}>
-                <Grid.Column width={2}>
+              <Grid.Row style={{padding:'0'}}>
+                
+                  
+                  <div className="progress-container">
+                    {
+                      !this.state.playing ? "" :
+                      <div className="progress-bar" style={{width:progress+"%",backgroundColor:project.borderColor}}></div>
+                    }
+
+                  </div>
+                
+               </Grid.Row>
+                <Grid.Row>
+                <Grid.Column width={2} style={{padding:'0'}}>
                     <button className={this.state.projectFull ? 'arrow-button arrow-button-full' : 'arrow-button arrow-button-small'} 
                           onClick={this.lastProject}
                           style={{backgroundColor:'rgba(0,0,0,.1)',color:project.arrowColor,margin:'0 auto',padding:'0'}}
@@ -285,7 +313,7 @@ class App extends Component{
                     </Icon>
                   </button>
                 </Grid.Column>
-                <Grid.Column width={12}>
+                <Grid.Column width={12} >
               <Header><h1 style={{fontFamily:"'"+project.font+"'"}}>{project.name}</h1></Header>
               <p className="description">{project.description}</p>
               <div className="flex-container" style={{minHeight:"8vh"}}>
@@ -295,7 +323,7 @@ class App extends Component{
               {
                 this.state.projectFull ?
                 <Button onClick={this.closeProject}>
-                  <Icon name="up arrow"></Icon>
+                  <Icon style={{color:project.buttonColor}} name="up arrow"></Icon>
                 </Button>
                 :
                 <Button onClick={this.openProject}>learn more</Button>
@@ -313,31 +341,35 @@ class App extends Component{
                 </a>
               }
               </div>
-              <div className="project-scrollable">
+              
               {
-                !this.state.projectFull || !project.collaborators.length ? '' :
-                <React.Fragment>
-                  <h3>collaborators</h3>
-                  {collaborators}
-                </React.Fragment>
-              }
-              {
-                !this.state.projectFull ? '' :
-                <React.Fragment>
-                  <h3>case study</h3>
-                 
+                !this.state.projectFull ? "" :
+                <div className="project-scrollable">
                   {
-                    project.caseStudy.map((para,i) => {
-                      return(
-                        <p key={'para_'+i}>
-                          {para}
-                        </p>
-                      )
-                    })
+                    !this.state.projectFull || !project.collaborators.length ? '' :
+                    <React.Fragment>
+                      <h3>collaborators</h3>
+                      {collaborators}
+                    </React.Fragment>
                   }
-                </React.Fragment> 
+                  {
+                    !this.state.projectFull ? '' :
+                    <React.Fragment>
+                      <h3>case study</h3>
+                    
+                      {
+                        project.caseStudy.map((para,i) => {
+                          return(
+                            <p key={'para_'+i}>
+                              {para}
+                            </p>
+                          )
+                        })
+                      }
+                    </React.Fragment> 
+                  }
+                  </div>
               }
-              </div>
               </Grid.Column>
               <Grid.Column width={2} >
                 <button className={this.state.projectFull ? 'arrow-button arrow-button-full' : 'arrow-button arrow-button-small'} 
@@ -347,7 +379,8 @@ class App extends Component{
                   <Icon name="right arrow" size='big' style={{margin:'0'}}></Icon>
                 </button>
               </Grid.Column>
-              </Grid>
+            </Grid.Row>  
+            </Grid>
           </main>
           <footer style={{color:project.logoColor}}>&copy;{year} Annie Finnerty</footer>
         </div>

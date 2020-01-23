@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import{Modal, Grid,Card, Image,Button} from 'semantic-ui-react';
+import{Modal, Grid,Card, Image} from 'semantic-ui-react';
 
 class Stack extends Component{
     constructor(){
