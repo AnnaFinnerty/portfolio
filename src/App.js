@@ -289,19 +289,9 @@ class App extends Component{
             {projectDots}
           </nav>
           <main>
-              <Grid className={this.state.projectFull ? 'project project-full' : 'project project-small'} columns={3} style={{margin:'0 auto', borderColor:project.borderColor}}>
-              <Grid.Row style={{padding:'0'}}>
-                
-                  
-                  <div className="progress-container">
-                    {
-                      !this.state.playing ? "" :
-                      <div className="progress-bar" style={{width:progress+"%",backgroundColor:project.borderColor}}></div>
-                    }
-
-                  </div>
-                
-               </Grid.Row>
+              <Grid className={this.state.projectFull ? 'project project-full' : this.state.playing ? 'project project-small-playing' : 'project project-small'} 
+                    columns={3} style={{margin:'0 auto', borderColor:project.borderColor}}>
+              
                 <Grid.Row>
                 <Grid.Column width={2} style={{padding:'0'}}>
                     <button className={this.state.projectFull ? 'arrow-button arrow-button-full' : 'arrow-button arrow-button-small'} 
@@ -390,7 +380,17 @@ class App extends Component{
                   <Icon name="right arrow" size='big' style={{margin:'0'}}></Icon>
                 </button>
               </Grid.Column>
-            </Grid.Row>  
+            </Grid.Row> 
+            <Grid.Row style={{padding:'0'}}>  
+                  <div className="progress-container">
+                    {
+                      !this.state.playing ? "" :
+                      <div className="progress-bar" style={{width:progress+"%",backgroundColor:project.borderColor}}></div>
+                    }
+
+                  </div>
+                
+               </Grid.Row> 
             </Grid>
           </main>
           <footer style={{color:project.logoColor}}>&copy;{year} Annie Finnerty</footer>
