@@ -64,7 +64,6 @@ h3{
 }
 
 .image-display{
-  /* border: 3px solid black; */
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: top;
@@ -84,7 +83,7 @@ h3{
   width:45vw;
   padding: 3vw;
   margin: 0 auto;
-  border-radius: 2%;
+  border-radius: 10px;
 }
 
 .project-small{

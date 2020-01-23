@@ -316,7 +316,7 @@ class App extends Component{
                   </button>
                 </Grid.Column>
                 <Grid.Column width={12} >
-              <Header><h1 style={{fontFamily:"'"+project.font+"'"}}>{project.name}</h1></Header>
+              <Header><h1 style={{fontFamily:"'"+project.font+"'",textAlign:'center'}}>{project.name}</h1></Header>
               <p className="description">{project.description}</p>
               <div className="flex-container" style={{minHeight:"8vh"}}>
                 {stack}
@@ -382,10 +382,10 @@ class App extends Component{
                   </div>
               }
               </Grid.Column>
-              <Grid.Column width={2} >
+              <Grid.Column width={2} style={{padding:'0'}}>
                 <button className={this.state.projectFull ? 'arrow-button arrow-button-full' : 'arrow-button arrow-button-small'} 
                         onClick={this.nextProject}
-                        style={{backgroundColor:'rgba(0,0,0,.1)',color:project.arrowColor,margin:'0',padding:'0'}}
+                        style={{backgroundColor:'rgba(0,0,0,.1)',color:project.arrowColor,margin:'0 auto',padding:'0',float:'right'}}
                       >
                   <Icon name="right arrow" size='big' style={{margin:'0'}}></Icon>
                 </button>
