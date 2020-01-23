@@ -63,14 +63,16 @@ class App extends Component{
     const nextProject = this.state.selectedProject >= this.state.projects.length - 1 ? 0 : this.state.selectedProject + 1;
     this.setState({
       selectedProject: nextProject,
-      projectFull: false
+      projectFull: false,
+      time: this.state.timeLimit
     })
   }
   lastProject = () => {
     const lastProject = this.state.selectedProject === 0 ? this.state.projects.length - 1 : this.state.selectedProject - 1;
     this.setState({
       selectedProject: lastProject,
-      projectFull: false
+      projectFull: false,
+      time: this.state.timeLimit
     })
   }
   playSlideshow = () => {
@@ -199,7 +201,7 @@ class App extends Component{
       )
     })
     const backgroundImage = {
-      backgroundImage: 'url('+ this.state.projects[this.state.selectedProject]['src'][0]+')'
+      backgroundImage: 'url('+ this.state.projects[this.state.selectedProject]['src'][0]+')',
     }
     const modalContent = this.state.modalOpen ? this.getModalContent() : '';
     const stack = project.stack.map((item,i) =>{
@@ -365,6 +367,15 @@ class App extends Component{
                             </p>
                           )
                         })
+                      }
+                      {
+                        !this.state.resume ? '' : 
+                        <Button
+                          onClick={this.closeProject}  
+                          style={{color:'green'}}>
+                            restart
+                            <Icon name='play' style={{margin:'0'}}></Icon>
+                        </Button>
                       }
                     </React.Fragment> 
                   }

@@ -239,7 +239,7 @@ const projects = [
         buttonColor: 'firebrick',
         borderColor: 'firebrick',
         font: 'Impact',
-        collaborators: []
+        collaborators: [],
     }
 ]
 
