@@ -101,11 +101,18 @@ h3{
   overflow-x: hidden;
 }
 
-.description{
+.stack-display{
+  margin-top: 1vh;
+  height: 65vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+/* .description{
   width: 100%;
   text-align: right;
   font-style: italic;
-}
+} */
 
 .arrow-button-small{
   height: 29vh;
@@ -137,8 +144,8 @@ h3{
   margin: .5vh 1vw ;
 }
 
-.more-icon{
-
+.stack-list-item:hover{
+  background: lightslategrey;
 }
 
 @media only screen and (max-width: 605px) {

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 
-import{Modal, Grid,Card, Image} from 'semantic-ui-react';
+import{Modal, Grid,Card, Image,Icon} from 'semantic-ui-react';
 
 class Stack extends Component{
     constructor(){
         super()
         this.state = {
             stack: 'all',
+            skill: 'all',
             selectedSkills: [],
         }
         this.skills = {
@@ -14,42 +15,51 @@ class Stack extends Component{
             backend: ['python','SQL','Java', 'noSQL', 'Mongo', 'MongoDB', 'Express.js'],
             languages: ['Java','javascript','python','c#'],
             other: ['git','slack','svg','agile teamwork'],
-            all: ['React.js','Node.js','javascript','HTML','DOM Manipulation','jQuery','CSS','python','SQL','Java', 'noSQL', 'Mongo', 'MongoDB', 'Express.js','git','slack','svg','agile teamwork']
+            all: ['all', 'React.js','Node.js','javascript', 'Java', 'C#', 'HTML5','DOM Manipulation','jQuery','CSS3','Python','SQL', 'noSQL', 'Mongoose', 'MongoDB', 'Express.js','git','slack','svg','agile teamwork']
         }
     }
-    shuffle = (arr) => {
-
+    selectSkill = (skill) => {
+        this.setState({
+            skill: skill
+        })
     }
     render(){
         console.log('stack props',this.props);
-        const skills = this.skills[this.state.stack].map((skill)=>(
-            <div>{skill}</div>
+        const skills = this.skills['all'].map((skill)=>(
+            <div className="stack-list-item"
+                 onClick={()=>this.selectSkill(skill)}
+            >
+                {skill}
+                {skill !== this.state.skill ? <Icon ></Icon> :
+                    <Icon name="circle"></Icon>
+                }
+            </div>
         ));
-        let projectCollection = this.state.selectedSkills.length ? this.props.projects : this.props.projects;
+        let projectCollection = this.state.skill === 'all' ? this.props.projects : 
+        this.props.projects.filter((project) => project.skills.includes(this.state.skill));
+        if(!projectCollection.length){
+            projectCollection = this.props.projects
+        }
         const projects = projectCollection.map((project) => (
-            <Card style={{width:'20vw',height:'20vw'}}>
+            <Card style={{width:'15vw',height:'15vw',margin:".5vw"}}>
                 <Image src={project.src} wrapped ui={false}/>
                 <Card.Content>
                     <Card.Header>{project.name}</Card.Header>
-                    <Card.Meta>
-                        {project.description}
-                    </Card.Meta>
-                    {/* <Card.Description>
-                        {project.stack}
-                    </Card.Description> */}
                 </Card.Content>
             </Card>
             )
         )
         return(
-            <Modal.Content>
+            <Modal.Content style={{height:'70vh'}}>
                 <Modal.Description> 
                     <Grid columns={2}>
-                        <Grid.Column width={3}>
+                        <Grid.Column width={5} style={{textAlign:'right'}}>
                             {skills}
                         </Grid.Column>
-                        <Grid.Column width={13}>
+                        <Grid.Column width={11}>
+                         <div className="stack-display flex-container">
                             {projects}
+                         </div>   
                         </Grid.Column>
                     </Grid>
                 </Modal.Description>

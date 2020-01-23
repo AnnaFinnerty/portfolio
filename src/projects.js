@@ -2,6 +2,7 @@ const projects = [
     {
         name: "stylish",
         stack: ['Javascript','HTML5', 'CSS3'],
+        skills: ['Javascript','HTML5', 'CSS3','svg','javascript','DOM manipulation'],
         type: 'Web',
         visibleKeywords:['frontend'],
         githubUrl: 'https://github.com/AnnaFinnerty/stylish',
@@ -25,14 +26,15 @@ const projects = [
         bannerColor: 'black',
         buttonColor: 'black',
         borderColor: 'black',
-        font: 'Arial Black',
+        font: 'Pacifico',
         collaborators: []
     },
     {
         name: "habit",
-        stack: ['Express.js','Mongoose', 'MongoDB','Heroku'],
+        stack: ['EJX','Express.js','Mongoose', 'MongoDB'],
+        skills: ['EJX','Express.js','Mongoose', 'MongoDB','agile teamwork', 'Node.js','javascript'],
         type: 'App',
-        visibleKeywords:['frontend','backend'],
+        visibleKeywords:['frontend','backend',],
         url: 'https://gahabit-app.herokuapp.com/',
         githubUrl: 'https://github.com/walter74ucla/Project-2',
         src: ['./img/Habit1.png'],
@@ -52,7 +54,7 @@ const projects = [
         bannerColor: 'black',
         buttonColor: 'darkorange',
         borderColor: 'orange',
-        font: 'Arial',
+        font: 'Righteous',
         collaborators: [{
             name: 'Walter Sylvester',
             url: 'https://github.com/walter74ucla'
@@ -60,9 +62,10 @@ const projects = [
     },
     {
         name: "still breaking",
-        stack: ['React.js','Python', 'Flask', 'SQL', 'API','React-Semantic-UI'],
+        stack: ['React.js','Python', 'Flask', 'SQL', 'API'],
+        skills: ['React.js','Python', 'Flask', 'SQL', 'API','React-Semantic-UI','Node.js','javascript'],
         type: 'App',
-        visibleKeywords:['frontend','backend'],
+        visibleKeywords:['frontend','backend','agile teamwork'],
         url: 'https://still-breaking-react.herokuapp.com/',
         githubUrl: 'https://github.com/tbone9/still-breaking-react',
         src: ['./img/StillBreaking1.png'],
@@ -82,7 +85,7 @@ const projects = [
         bannerColor: 'black',
         buttonColor: 'navy',
         borderColor: 'dodgerblue',
-        font: 'Times New Roman',
+        font: 'Special Elite',
         collaborators: [{
             name: 'Tyler Walker',
             url: 'https://github.com/tbone9'
@@ -91,6 +94,7 @@ const projects = [
     {
         name: "citadels",
         stack: ['React.js', 'CSS3', 'AI'],
+        skills: ['React.js', 'CSS3', 'AI','svg','Node.js','javascript'],
         type: 'Game',
         visibleKeywords:['frontend','backend'],
         url: 'https://annafinnerty.github.io/Citadels/',
@@ -112,7 +116,7 @@ const projects = [
         bannerColor: 'black',
         buttonColor: 'dodgerblue',
         borderColor: 'coral',
-        font: 'Impact',
+        font: "Bowlby One SC",
         collaborators: []
     },
     {
@@ -140,6 +144,7 @@ const projects = [
     {
         name: "color wheel",
         stack: ['HTMLCanvas', 'HTML5', 'CSS3'],
+        skills: ['HTMLCanvas', 'HTML5', 'CSS3','agile teamwork','javascript'],
         type: 'Game',
         visibleKeywords:['frontend','backend'],
         url: 'https://annafinnerty.github.io/named_colorwheel/',
@@ -163,7 +168,7 @@ const projects = [
         bannerColor: 'black',
         buttonColor: 'magenta',
         borderColor: 'magenta',
-        font: 'Lucida Grande',
+        font: 'Permanent Marker',
         collaborators: [{
             name: 'Michael Finnerty',
             url: 'https://github.com/MichaelJamesFinnerty'
@@ -216,6 +221,7 @@ const projects = [
     {
         name: "Song Battle",
         stack: ['React.js','Firestore'],
+        skills: ['React.js','Firestore','Node.js','noSQL'],
         type: 'web app',
         visibleKeywords:['backend'],
         url: 'https://song-battle.herokuapp.com/',
@@ -238,7 +244,7 @@ const projects = [
         bannerColor: 'black',
         buttonColor: 'firebrick',
         borderColor: 'firebrick',
-        font: 'Impact',
+        font: 'Rock Salt',
         collaborators: [],
     }
 ]
