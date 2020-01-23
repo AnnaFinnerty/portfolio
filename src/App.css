@@ -87,11 +87,11 @@ h3{
 }
 
 .project-small{
-  height: 37vh;
+  height: 35vh;
 }
 
 .project-small-playing{
-  height: 43vh;
+  height: 37vh;
 }
 
 .project-full{
@@ -119,7 +119,7 @@ h3{
 } */
 
 .arrow-button-small{
-  height: 29vh;
+  height: 23vh;
 }
 
 .arrow-button-full{
@@ -128,12 +128,12 @@ h3{
 
 .progress-container{
   width:100%;
-  height: 5vh;
+  height: 4vh;
 }
 
 .progress-bar{
   width:100%;
-  height: 5vh;
+  height: 4vh;
   background: green;
 }
 
@@ -185,3 +185,14 @@ h3{
     width: 60vw;
   }
 }
+
+@media only screen and (max-height: 400px) {
+  .project-small{
+    height: 37vh;
+  }
+  
+  .project-small-playing{
+    height: 41vh;
+  }
+}
+
