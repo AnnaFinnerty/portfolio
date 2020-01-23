@@ -316,7 +316,7 @@ class App extends Component{
                   </button>
                 </Grid.Column>
                 <Grid.Column width={12} >
-              <Header><h1 style={{fontFamily:"'"+project.font+"'",textAlign:'center'}}>{project.name}</h1></Header>
+              <Header><h1 style={{fontFamily:"'"+project.font+"'",color:project.logoColor,textAlign:'center'}}>{project.name}</h1></Header>
               <p className="description">{project.description}</p>
               <div className="flex-container" style={{minHeight:"8vh"}}>
                 {stack}
